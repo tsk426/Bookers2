@@ -11,7 +11,14 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <% flash.each do |key, message| %>
+    <div class="flash-message <%= key %>">
+      <%= message %>
+    </div>
+  <% end %>
+
   <body>
+    <%= current_user %>
     <%= yield %>
   </body>
 </html>

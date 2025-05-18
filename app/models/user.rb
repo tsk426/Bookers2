@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :books, dependent: :destroy
 
+  has_one_attached :image
+
   # ログインに必要な情報メアド⇒nameのバリデーション
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
