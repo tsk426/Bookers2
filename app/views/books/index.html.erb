@@ -1,10 +1,20 @@
 <%= render 'layouts/header' %>
 
 <h1> User Info </h1>
-<div>image</div>
-<div>name test</div>
-<div>introduction</div>
+<tbody>
+<tr>
+<td>
+<% if current_user.image.attached? %>
+<p><%= image_tag user.image %></p>
+<% else %>
+<p><%= image_tag "no_image.jpg", alt: "No image available" %></p>
+<% end %>
+</td>
+</tr>
+</tbody>
 
+<div> Name  <%= current_user.name %> </div>
+<div> Introduction  <%= current_user.introduction %> </div>
 <%= link_to '編集ボタン', edit_user_registration_path %>
 
 <%= form_with model: @book do |f| %>
@@ -23,7 +33,7 @@
   </div>
 <% end %>
 
-
+<h1> Books </h1>
 <table>
   <thead>
     <tr>
@@ -40,3 +50,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= render 'layouts/footer' %>
