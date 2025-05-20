@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def create
     @book = current_user.books.build(book_params)
     if @book.save
-    redirect_to users_home_path
+    redirect_to user_path(current_user.id)
     end
   end
 
@@ -31,10 +31,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    if current_user.update(user_params)
-    redirect_to users_home_path
-    end
+    current_user.update(user_params)
+    redirect_to user_path(current_user)
   end
 
 end

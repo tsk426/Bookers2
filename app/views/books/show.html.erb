@@ -1,9 +1,11 @@
+<%= render 'layouts/header' %>
+
 <h1> User Info </h1>
 <tbody>
 <tr>
 <td>
-<% if current_user.image.attached? %>
-<p><%= image_tag current_user.image %></p>
+<% if @user.image.attached? %>
+<p><%= image_tag @user.image %></p>
 <% else %>
 <p><%= image_tag "no_image.jpg", alt: "No image available" %></p>
 <% end %>
@@ -11,11 +13,11 @@
 </tr>
 </tbody>
 
-<div> Name  <%= current_user.name %> </div>
-<div> Introduction  <%= current_user.introduction %> </div>
+<div> Name  <%= user.name %> </div>
+<div> Introduction  <%= @user.introduction %> </div>
 <%= link_to '編集ボタン', edit_user_registration_path %>
 
-<%= form_with model: Book.new, url: user_books_path(current_user) do |f| %>
+<%= form_with model: @book do |f| %>
   <div>
     <%= f.label :title, 'Title' %> <br>
     <%= f.text_field :title %>
@@ -30,4 +32,24 @@
     <%= f.submit "Create Book" %>
   </div>
 <% end %>
-<%= render 'layouts/footer' %>
+
+
+<h1> Book detail </h1>
+
+<% if current_user.image.attached? %>
+<p><%= image_tag current_user.image %></p>
+<% else %>
+<p><%= image_tag "no_image.jpg", alt: "No image available" %></p>
+<% end %>
+<%= @book.user.name %>
+<%= @book.title %>
+<p><%= @book.body %></p>
+
+<% if @book.user == current_user %>
+  <%= link_to 'Edit', edit_book_path(@book) %> |
+  <%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に削除しますか？' } %>
+<% end %>
+
+
+  <%= render 'layouts/footer' %>
+
