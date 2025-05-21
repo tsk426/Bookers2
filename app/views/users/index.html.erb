@@ -1,7 +1,6 @@
 <%= render 'layouts/header' %>
 <h1> User Info </h1>
-<%= render 'layouts/info' %>
-<%= render 'layouts/post' %>
+<%= render 'layouts/info', user: current_user %>
 
 <%= form_with model: @book do |f| %>
   <div>

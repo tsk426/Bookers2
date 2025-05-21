@@ -1,21 +1,7 @@
 <%= render 'layouts/header' %>
 
 <h1> User Info </h1>
-<tbody>
-<tr>
-<td>
-<% if @user.image.attached? %>
-<p><%= image_tag @user.image %></p>
-<% else %>
-<p><%= image_tag "no_image.jpg", alt: "No image available" %></p>
-<% end %>
-</td>
-</tr>
-</tbody>
-
-<div> Name  <%= user.name %> </div>
-<div> Introduction  <%= @user.introduction %> </div>
-<%= link_to '編集ボタン', edit_user_registration_path %>
+<%= render 'layouts/info', user: @user %>
 
 <%= form_with model: @book do |f| %>
   <div>

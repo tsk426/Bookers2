@@ -1,21 +1,15 @@
 <tbody>
   <tr>
     <td>
-      <% if current_user == @user %>
-        <p><%= current_user.name %></p>
-        <% if current_user.image.attached? %>
-          <p><%= image_tag current_user.image %></p>
-        <% else %>
-          <p><%= image_tag "no_image.jpg", alt: "No image available" %></p>
-        <% end %>
+      <% if current_user.image.attached? %>
+        <p><%= image_tag current_user.image %></p>
       <% else %>
-        <p><%= @user.name  %></p>
-        <% if @user.image.attached? %>
-          <p><%= image_tag @user.image %></p>
-        <% else %>
-          <p><%= image_tag "no_image.jpg", alt: "No image available" %></p>
-        <% end %>
+        <p><%= image_tag "no_image.jpg", alt: "No image available" %></p>
       <% end %>
     </td>
   </tr>
 </tbody>
+
+<p><strong>Name:</strong><%= user.name %><p>
+<p><strong>Introduction:</strong><%= user.introduction %><p>
+<%= link_to '編集', edit_user_path(user.id) %>
