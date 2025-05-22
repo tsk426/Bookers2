@@ -1,5 +1,12 @@
-<h2>User Info</h2>
+<%= render 'layouts/header' %>
+<%= render 'layouts/flash' %>
 
+<main>
+<div class="container px-5 px-sm-0">
+<div class="container">
+<div class="row">
+<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+<h2>User Info</h2>
 <%= form_with model: @user, url: user_path, local: true do |f| %>
   <div class="field">
     <%= f.label :name %><br>
@@ -11,8 +18,6 @@
     <%= f.file_field :image %></br>
     <% if current_user.image.attached? %>
       <%= image_tag current_user.image %>
-    <% else %>
-      <%= image_tag "no_image.jpg", alt: "No image available" %>
     <% end %>
   </div>
 
@@ -21,7 +26,15 @@
     <%= f.text_area :introduction %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update User" %>
+  <div class="form-group">
+    <input type="submit" name="commit" value="Update User" class="btn btn-secondary" data-disable-with="Update User">
   </div>
 <% end %>
+
+</div>
+</div>
+</div>
+</div>
+</main>
+
+<%= render 'layouts/footer' %>

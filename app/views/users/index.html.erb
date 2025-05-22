@@ -1,31 +1,20 @@
 <%= render 'layouts/header' %>
-<h1> User Info </h1>
-<%= render 'layouts/info', user: current_user %>
+<%= render 'layouts/flash' %>
 
-<%= form_with model: @book do |f| %>
-  <div>
-    <%= f.label :title, 'Title' %> <br>
-    <%= f.text_field :title %></br>
-  </div>
-
-  <div>
-    <%= f.label :body, 'Opinion' %> <br>
-    <%= f.text_area :body %> 
-  </div>
-
-  <div>
-    <%= f.submit "Create Book" %>
-  </div>
-<% end %>
-
-<h1> Users </h1>
-<table>
-<thead>
-<tr>
-<th>Image</th>
-<th>Name</th>
-</tr>
-</thead>
+<div class="container px-5 px-sm-0">
+<div class="row">
+<div class="col-md-3">
+  <%= render 'layouts/info', user: @user %>
+</div>
+<div class="col-md-8 offset-md-1">
+  <h1> Users </h1>
+  <table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+    </tr>
+  </thead>
 <tbody>
 <tr>
 <% @users.each do |user| %>
@@ -42,5 +31,8 @@
 <% end %>
 </tbody>
 </table>
+</div>
+</div>
+</div>
 
 <%= render 'layouts/footer' %>

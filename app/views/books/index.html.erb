@@ -1,24 +1,13 @@
 <%= render 'layouts/header' %>
+<%= render 'layouts/flash' %>
 
-<h1> User Info </h1>
-<%= render 'layouts/info', user: current_user %>
+<div class="container px-5 px-sm-0">
+<div class="row">
+<div class="col-md-3">
+<%= render 'layouts/info', user: @user.id %>
+</div>
 
-<%= form_with model: @book do |f| %>
-  <div>
-    <%= f.label :title, 'Title' %> <br>
-    <%= f.text_field :title %></br>
-  </div>
-
-  <div>
-    <%= f.label :body, 'Opinion' %> <br>
-    <%= f.text_area :body %> 
-  </div>
-
-  <div>
-    <%= f.submit "Create Book" %>
-  </div>
-<% end %>
-
+<div class="col-md-8 offset-md-1">
 <h1> Books </h1>
 <table>
   <thead>
@@ -36,5 +25,8 @@
     <% end %>
   </tbody>
 </table>
+</div>
+</div>
+</div>
 
 <%= render 'layouts/footer' %>
