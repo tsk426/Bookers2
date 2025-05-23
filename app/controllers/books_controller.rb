@@ -2,6 +2,9 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_book, only: [:destroy]
 
+  def new
+    @book = Book.new(book_params)
+  end
 
   def show
     @book = Book.find(params[:id])
@@ -17,11 +20,12 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @book = Book.new
     @user = current_user
   end
 
   def user_book
-   @books = current_user_books 
+   @books = current_user.books
   end
 
   def update
@@ -36,7 +40,7 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    redirect_to books_path(@book.id)
+    redirect_to books_path
   end
 
 end

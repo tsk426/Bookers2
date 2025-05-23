@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_one_attached :image
 
   # ログインに必要な情報メアド⇒nameのバリデーション
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true, length: { in: 2..20 }
   validates :email, presence: true, uniqueness: true
+  validates :introduction, length: { maximum: 50 }
 end

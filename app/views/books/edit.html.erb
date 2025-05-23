@@ -1,35 +1,44 @@
 <%= render 'layouts/header' %>
 <%= render 'layouts/flash' %>
 
-<h1>Editing Book</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>Editing Book</h1>
 
-<%= form_with model: @book, local: true do |form| %>
-  <% if @book.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
-      <ul>
-        <% @book.errors.full_messages.each do |message| %>
+      <%= form_with model: @book, local: true do |form| %>
+      <% if @book.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
           <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :title %><br>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :body %>
+    <%= form.label :body %><br>
     <%= form.text_area :body %>
   </div>
 
-  <div class="actions">
-    <%= form.submit 'Update Book' %>
+  <div class="form-group">
+    <%= form.submit 'Update Book', class: 'btn btn-success', data: { disable_with: 'Update Book' } %>
   </div>
-<% end %>
+  <% end %>
 
 
 <%= link_to 'Show', @book %>|
 <%= link_to 'Back', books_path %>
+
+    </div>
+  </div>
+</div>
+
+  <%= render 'layouts/footer' %>
