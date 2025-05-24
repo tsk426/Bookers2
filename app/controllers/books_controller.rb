@@ -1,6 +1,9 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_book, only: [:destroy]
+  before_action :set_book, only: [:edit, :update, :destroy]
+
+  before_action :authenticate_user! 
+  before_action :check_book_owner, only: [:edit, :update, :destroy]
 
   def new
     @book = Book.new(book_params)
@@ -15,6 +18,10 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.new(book_params)
     if @book.save
+    flash[:success] = "You have created book successfully."
+    redirect_to book_path(@book.id)
+    else
+    flash[:error] = "error"
     redirect_to book_path(@book.id)
     end
   end
@@ -31,8 +38,13 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find(params[:id])
-    @book.update(book_params)
+    if @book.update(book_params)
+    flash[:success] = "You have updated book successfully."
     redirect_to book_path(@book.id)
+    else
+    flash[:error] = "error"
+    redirect_to book_path(@book.id)
+    end
   end
 
   def edit
@@ -54,4 +66,12 @@ private
 
   def set_book
     @book = Book.find(params[:id])
+  end
+
+  def check_book_owner
+    @book = Book.find(params[:id])
+    unless @book.user == current_user
+      flash[:error] = 'You are not authorized.'
+      redirect_to books_path
+    end
   end

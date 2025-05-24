@@ -1,8 +1,7 @@
 <%= render 'layouts/header' %>
-<%= render 'layouts/flash' %>
-
 
 <main>
+<p id="notice"><%= render 'layouts/flash' %></p>
   <div class="container px-5 px-sm-0">
     <div class="row">
     <div class="col-md-3">
@@ -15,7 +14,7 @@
       <tr>
         <td>
           <% if @book.user.image.attached? %>
-          <%= image_tag @book.user.image %>
+          <%= image_tag @book.user.image, size: "80x80" %>
           <% else %>
           <%= image_tag "no_image.jpg", alt: "No image available" %>
           <% end %><br>

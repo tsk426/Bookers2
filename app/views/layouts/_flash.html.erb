@@ -1,7 +1,8 @@
-<div class="log">
-<% flash.each do |key, message| %>
-  <div class="flash-message <%= key %>">
-    <%= message %>
-  </div>
+
+<div>
+  <% flash.each do |type, message| %>
+    <div class="alert <%= type %>">
+      <%= message %>
+    </div>
   <% end %>
 </div>

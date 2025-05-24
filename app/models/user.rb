@@ -11,4 +11,8 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true, length: { in: 2..20 }
   validates :email, presence: true, uniqueness: true
   validates :introduction, length: { maximum: 50 }
+
+  def resized_variant
+    file.variant(resize: "300x300").processed
+  end
 end
