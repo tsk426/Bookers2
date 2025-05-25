@@ -8,16 +8,16 @@
 <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 <h2>User Info</h2>
 <%= form_with model: @user, url: user_path, local: true do |f| %>
-  <div class="field">
+  <div class="field" type="text" value="test" name="user[name]" id="user_name">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, disabled: false %>
   </div>
 
   <div class="field">
-    <%= f.label :image %><br>
-    <%= f.file_field :image %></br>
-    <% if current_user.image.attached? %>
-      <%= image_tag current_user.image %>
+    <%= f.label :profile_image %><br>
+    <%= f.file_field :profile_image %></br>
+    <% if current_user.profile_image.attached? %>
+      <%= image_tag current_user.profile_image %>
     <% end %>
   </div>
 

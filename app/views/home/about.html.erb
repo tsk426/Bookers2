@@ -3,7 +3,7 @@
     <div class="container">
       <div class="navbar-brand">
         <span>
-          <%= link_to "Bookers", "/root_path" %>
+          <%= link_to "Bookers", root_path %>
         </span>
         </div>
 
@@ -30,14 +30,14 @@
           <li>
             <div class="nav-link text-light"> 
               <%= link_to new_user_registration_path do %>
-                <i class="fa-solid fa-user-plus"></i> Signup
+                <i class="fa-solid fa-user-plus"></i> Sign up
               <% end %>
             </div>
           </li>
           <li>
           <div class="nav-link text-light"> 
               <%= link_to new_user_session_path do %>
-                <i class="fa-solid fa-sign-in-alt"></i> Login
+                <i class="fa-solid fa-sign-in-alt"></i> Log in
               <% end %>
             </div>
           </li>
@@ -48,6 +48,7 @@
   </nav>
 </header>
 <%= render 'layouts/flash' %>
+
 
 <main>
   <p id="notice"></p>
@@ -62,20 +63,7 @@
         <strong>Bookers</strong>
         !!
         </h1>
-          <p>In  <i class="fa-solid fa-book"></i><strong>Bookers</strong>, </p>
-
-          <p>you can share and exchange your opinions , inpressions , and emotions
-          about various books!</p>
-
-        <div class="btn-wrapper col-10 mx-auto">
-          <div class="row">
-            <a class="btn btn-info btn-sm btn-block mb-3 sign_in" href="<%= new_user_session_path %>">Log in</a>
-          </div>
-            <div class="row">
-              <a class="btn btn-success btn-sm btn-block sign_up" href="<%= new_user_registration_path %>">Sign up</a>
-            </div>
-          </div>
-        </div>
+      </div>
     </div>
   </div>
 </main>

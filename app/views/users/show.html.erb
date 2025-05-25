@@ -21,8 +21,8 @@
      <% @books.each do |book| %>
         <tr>
           <td>
-            <% if book.user.image.attached? %>
-            <%= image_tag book.user.image, size: "80x80", style: "width: 80px; height: 80px;" %>
+            <% if book.user.profile_image.attached? %>
+            <%= image_tag book.user.profile_image, size: "80x80", style: "width: 80px; height: 80px;" %>
             <% else %>
             <%= image_tag "no_image.jpg", size: "80x80" %>
             <% end %>

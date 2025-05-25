@@ -5,7 +5,7 @@
 <div class="container px-5 px-sm-0">
 <div class="row">
 <div class="col-md-3">
-  <%= render 'users/indexinfo', user: @user %>
+  <%= render 'users/indexinfo', book: @book %>
 </div>
 <div class="col-md-8 offset-md-1">
   <h1> Users </h1>
@@ -20,10 +20,10 @@
 <tr>
 <% @users.each do |user| %>
 <td>
-<% if user.image.attached? %>
-<p><%= image_tag user.image %></p>
+<% if user.profile_image.attached? %>
+<p><%= image_tag user.profile_image, size: "80x80" %></p>
 <% else %>
-<p><%= image_tag "no_image.jpg", alt: "No image available" %></p>
+<p><%= image_tag "no_image.jpg", size: "80x80", alt: "No image available" %></p>
 <% end %>
 </td>
 <td><%= user.name %></td>
