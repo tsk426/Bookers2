@@ -21,12 +21,12 @@
   <% @books.each do |book| %>
     <tr>
       <td>
-        <% if book.user.profile_image.attached? %> <!-- @find_bookではなくbookを使用 -->
-          <%= link_to user_path(book.user) do %> <!-- book.userに修正 -->
-          <%= image_tag book.user.profile_image, size: "80x80" %> <!-- book.userに修正 -->
+        <% if book.user.profile_image.attached? %> 
+          <%= link_to user_path(book.user) do %> 
+          <%= image_tag book.user.profile_image, size: "80x80" %> 
         <% end %>
         <% else %>
-          <%= link_to user_path(book.user) do %> <!-- book.userに修正 -->
+          <%= link_to user_path(book.user) do %> 
           <%= image_tag "no_image.jpg", alt: "No image available" %>
           <% end %>
         <% end %>

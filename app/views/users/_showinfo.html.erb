@@ -1,0 +1,52 @@
+<h2>User Info</h2>
+
+  <div class="user-image text-center mb-3">
+    <% if @user.profile_image.attached? %>
+      <%= image_tag @user.profile_image, class: "img-fluid rounded-circle" %>
+    <% else %>
+      <%= image_tag "no_image.jpg", alt: "No image available", class: "img-fluid rounded-circle" %>
+    <% end %>
+  </div>
+
+  <table class="table">
+    <tbody>
+      <tr>
+        <th><strong>Name</strong></th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th><strong>Introduction</strong></th>
+        <td><%= @user.introduction %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="row">
+    <div class="text-center mb-4">
+      <% if @user.id == current_user.id %>
+      <%= link_to edit_user_path(current_user.id) do %>
+      <i class="fas fa-user-cog"></i>
+      <% end %>
+      <% end %>
+      </div>
+    </div>
+
+  <h2>New book</h2>
+    <%= form_with model: @book do |f| %>
+      <div class="mb-2">
+        <%= f.label :title, 'Title' %><br>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="mb-2">
+        <%= f.label :body, 'Opinion' %><br>
+        <%= f.text_area :body, class: "form-control book_body", id: "book_body" %>
+      </div>
+
+    <div>
+      <%= f.submit "Create Book", class: "btn btn-success btn-block" %>
+    </div>
+  <% end %>
+
+
+

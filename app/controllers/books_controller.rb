@@ -22,8 +22,9 @@ class BooksController < ApplicationController
     flash[:success] = "You have created book successfully."
     redirect_to @book
     else
-    flash[:error] = "error"
-    render :show
+    @books = Book.all
+    flash[:error] = "can't be blank"
+    render :index
     end
   end
 
@@ -43,8 +44,8 @@ class BooksController < ApplicationController
     flash[:success] = "You have updated book successfully."
     redirect_to book_path(@book.id)
     else
-    flash[:error] = "error"
-    redirect_to book_path(@book.id)
+    flash[:error] = "can't be blank"
+    render :edit
     end
   end
 

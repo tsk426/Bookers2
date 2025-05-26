@@ -5,7 +5,7 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
   <div class="col-md-3">
-    <%= render 'layouts/info', user: @user.id %>
+    <%= render 'users/showinfo', user: @user.id %>
   </div>
   <div class="col-md-8 offset-md-1">
   <h1> Books </h1>
@@ -22,9 +22,13 @@
         <tr>
           <td>
             <% if book.user.profile_image.attached? %>
-            <%= image_tag book.user.profile_image, size: "80x80", style: "width: 80px; height: 80px;" %>
+              <%= link_to user_path(book.user) do %>
+              <%= image_tag book.user.profile_image, size: "80x80", style: "width: 80px; height: 80px;" %>
+              <% end %>
             <% else %>
+              <%= link_to user_path(book.user) do %>
             <%= image_tag "no_image.jpg", size: "80x80" %>
+            <% end %>
             <% end %>
           </td>
           <td>

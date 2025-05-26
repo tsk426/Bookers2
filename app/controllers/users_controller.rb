@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
     else
     flash[:error] = "Your name is too short (minimum is 2 characters)"
-    redirect_to user_path(@user.id)
+    render :edit
     end
   end
 
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
-      redirect_to user_path(current_user.id)
+    redirect_to user_path(current_user.id)
     end
   end
 
