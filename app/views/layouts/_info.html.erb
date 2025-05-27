@@ -23,12 +23,12 @@
   </table>
 
   <div class="row">
-    <div class="text-center mb-4">
-      <a class="btn btn-outline-secondary btn-block " href="<%= edit_user_path(current_user) %>">
+  <div class="text-center mb-4 btn btn-outline-secondary btn-block">
+    <%= link_to edit_user_path(current_user) do %>
       <i class="fas fa-user-cog"></i>
-      </a>
-    </div>
+    <% end %>
   </div>
+</div>
 
   <h2>New book</h2>
     <%= form_with model: @book do |f| %>
