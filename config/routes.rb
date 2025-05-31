@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   
   devise_for :users
   
-  resources :books
   resources :users
+  resources :books do
+    resource :favorite, only: [:create, :destroy]
+    resources :book_comments, only: [:create, :destroy]
+  end
 end
