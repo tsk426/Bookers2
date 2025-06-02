@@ -6,9 +6,15 @@ Rails.application.routes.draw do
   
   devise_for :users
   
-  resources :users
+  resources :users do
+    member do
+      get :followings
+      get :followers
+    end
+  end
   resources :books do
     resource :favorite, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
   end
+  resources :relationships, only: [:create, :destroy]
 end

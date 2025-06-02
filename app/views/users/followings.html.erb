@@ -1,0 +1,27 @@
+<%= render 'layouts/header' %>
+
+<h2>Follower Users</h2>
+
+<table>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+          <% if user.profile_image.attached? %>
+            <p><%= image_tag user.profile_image, size: "80x80" %></p>
+          <% else %>
+            <p><%= image_tag "no_image.jpg", size: "80x80", alt: "No image available" %></p>
+          <% end %>
+        </td>
+        <td><%= user.name %></td>
+        <td>
+          <div class="user-card">
+            <strong>フォロー数</strong> <%= user.following.count %>
+            |
+            <strong>フォロワー数</strong> <%= user.followers.count %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

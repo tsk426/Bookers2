@@ -19,6 +19,16 @@
       <th><strong>Introduction</strong></th>
       <td><%= user.introduction %></td>
     </tr>
+    <tr>
+    <p>
+      follows
+      <%= link_to @user.following.count, followings_user_path(@user) %>
+    </p>
+    <p>
+      followers
+      <%= link_to @user.followers.count, followings_user_path(@user) %>
+    </p>
+  </tr>
   </tbody>
 </table>
   <div class="row">

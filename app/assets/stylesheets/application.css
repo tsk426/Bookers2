@@ -262,3 +262,18 @@ tr {
 .fa-user-cog {
   color: gray;
 }
+
+.user-card {
+  display: flex;
+  gap: 20px; 
+  align-items: center; 
+  font-size: 10px;
+}
+
+.follow-btn {
+  font-size: 10px;  /* ボタンの文字サイズ */
+  padding: 4px 10px; /* ボタンの内側の余白 */
+  width: 100px;      /* ボタンの横幅 */
+  height: 30px;      /* ボタンの高さ */
+  /* 必要に応じて色やボーダーも変更可能 */
+}
