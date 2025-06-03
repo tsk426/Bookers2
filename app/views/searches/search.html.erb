@@ -1,0 +1,47 @@
+<%= render 'layouts/header' %>
+
+
+<div class="container px-5 px-sm-0">
+<div class="container">
+<div class="row">
+<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+<h2><%= @model.capitalize %> search for "<%= @content %>"</h2>
+
+<% if @records.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @records.each do |record| %>
+        <% 
+          # modelによって表示に使うオブジェクトを決める
+          display_record = @model == "book" ? record.book : record
+          # 画像はユーザーのプロフィール画像を表示
+          user_for_image = @model == "book" ? record.user : record
+        %>
+        <tr>
+          <td>
+            <% if user_for_image.profile_image.attached? %>
+              <%= image_tag user_for_image.profile_image, size: "100x100" %>
+            <% else %>
+              <%= image_tag "no_image.jpg", alt: "No image available", class: "img-fluid rounded-circle" %>
+            <% end %>
+          </td>
+          <td><%= link_to display_record.title, book_path(display_record) %></td>
+          <td><%= truncate(display_record.body, length: 100) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>該当する結果がありません。</p>
+<% end %>
+</div>
+</div>
+</div>
+</div>

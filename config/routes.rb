@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/users/home', to: 'users#home'
   post 'users/home', to: 'users#home'
   get 'home/about', to: 'home#about'
+  get 'search', to: 'searches#search'
   
   devise_for :users
   

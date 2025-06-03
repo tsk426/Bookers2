@@ -42,4 +42,18 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  def self.search_for(content, method)
+    case method
+    when 'perfect'
+      where(name: content)
+    when 'forward'
+      where("name LIKE ?", "#{content}%")
+    when 'backward'
+      where("name LIKE ?", "%#{content}")
+    when 'partial'
+      where("name LIKE ?", "%#{content}%")
+    end
+  end
+  
 end
