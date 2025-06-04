@@ -18,12 +18,11 @@
     </thead>
     <tbody>
       <% @records.each do |record| %>
-        <% 
-          # modelによって表示に使うオブジェクトを決める
-          display_record = @model == "book" ? record.book : record
-          # 画像はユーザーのプロフィール画像を表示
-          user_for_image = @model == "book" ? record.user : record
-        %>
+  <% 
+    user_for_image = record.respond_to?(:user) ? record.user : record
+    title = record.try(:title) || record.try(:name)
+    body = record.try(:body)
+  %>
         <tr>
           <td>
             <% if user_for_image.profile_image.attached? %>
@@ -32,8 +31,8 @@
               <%= image_tag "no_image.jpg", alt: "No image available", class: "img-fluid rounded-circle" %>
             <% end %>
           </td>
-          <td><%= link_to display_record.title, book_path(display_record) %></td>
-          <td><%= truncate(display_record.body, length: 100) %></td>
+          <td><%= link_to title, book_path(record.id) %></td>
+          <td><%= truncate(body, length: 100) %></td>
         </tr>
       <% end %>
     </tbody>
