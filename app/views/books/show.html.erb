@@ -44,13 +44,13 @@
         <span><%= @book.favorites.count %></span>
         </td>
         <td>
-          <p>コメント件数：<%= @book.book_comments.count %></p>
+        <p class="comments-count">コメント件数：<%= @book.book_comments.count %></p>
         </td>
       </tr>
     </tbody>
   </table>
-  <div class="comments">
-    <%= render "book_comments/comments", locals: { book: @book, book_comment: BookComment.new } %>
+  <div id="book_<%= @book.id %>_comments" class="book_comments">
+    <%= render "book_comments/comments", locals: { book: @book } %>
   </div>
 </main>
 
